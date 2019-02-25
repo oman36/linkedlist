@@ -50,6 +50,18 @@ class TestListMethods(unittest.TestCase):
         self.assertIs(list_.get_head(), head)
         self.assertIs(head.get_head(), head)
 
+    def test_add(self):
+        list_ = List(1, List(2, List(3)))
+        tail = List(5, List(6))
+        list_ += tail
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
+        tail.value = 0
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
+
 
 if __name__ == '__main__':
     unittest.main()
