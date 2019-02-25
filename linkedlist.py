@@ -14,7 +14,7 @@ class List:
             current = current.next
 
     def print(self, sep: str = ' '):
-        print(sep.join(str(v) for v in self))
+        self._print(sep=sep, reversed_=False)
 
     def get_head(self):
         head = self
@@ -46,3 +46,15 @@ class List:
             current = current.next
 
         return root
+
+    def __reversed__(self):
+        values = [v for v in self]
+        for v in reversed(values):
+            yield v
+
+    def _print(self, sep: str, reversed_: bool = False):
+        values = reversed(self) if reversed_ else self
+        print(sep.join(str(v) for v in values))
+
+    def print_reversed(self, sep: str = ' '):
+        self._print(sep=sep, reversed_=True)
