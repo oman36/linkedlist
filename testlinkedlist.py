@@ -44,6 +44,12 @@ class TestListMethods(unittest.TestCase):
             list_.print('\t')
             self.assertEqual(out.getvalue().strip(), '1\t2\t3\t4')
 
+    def test_get_head(self):
+        head = List(3)
+        list_ = List(1, List(2, head))
+        self.assertIs(list_.get_head(), head)
+        self.assertIs(head.get_head(), head)
+
 
 if __name__ == '__main__':
     unittest.main()
