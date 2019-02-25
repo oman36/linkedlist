@@ -42,14 +42,14 @@ class List:
         if not isinstance(other, (List, list)):
             return NotImplemented
 
-        root = self.__copy__()
+        root = self._copy()
         current = root.get_tail()
         for v in other:
             current._next = self.__class__(v)
             current = current._next
         return root
 
-    def __copy__(self):
+    def _copy(self):
         current = root = self.__class__(self._value)
         if self._next is not None:
             for val in self._next:

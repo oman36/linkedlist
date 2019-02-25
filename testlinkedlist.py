@@ -63,14 +63,6 @@ class TestListMethods(unittest.TestCase):
             list_.print('\t')
             self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
 
-    def test_copy(self):
-        list_ = List(1, List(2, List(3)))
-        list_2 = copy(list_)
-        list_2._next._value = 0
-        with captured_output() as (out, err):
-            list_.print('\t')
-            self.assertEqual(out.getvalue().strip(), '1\t2\t3')
-
     def test_add_list(self):
         list_ = List(1, List(2, List(3)))
         simple_list = [5, 6]
