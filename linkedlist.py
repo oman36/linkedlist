@@ -38,8 +38,7 @@ class List:
 
     def __add__(self, other):
         if not isinstance(other, (List, list)):
-            raise TypeError('unsupported operand type(s) for +: \'%s\' and \'%s\'' %
-                            (self.__class__, other.__class__))
+            return NotImplemented
 
         root = self.__copy__()
         current = root.get_head()
