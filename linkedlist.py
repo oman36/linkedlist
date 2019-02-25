@@ -14,15 +14,26 @@ class List:
             current = current.next
 
     def print(self, sep: str = ' '):
+        """Print all values from self to head separated by `sep`
+
+        :param sep: separator
+        """
         self._print(sep=sep, reversed_=False)
 
     def get_head(self):
+        """
+        :return: last list's element
+        """
         head = self
         for head in self._iter():
             pass
         return head
 
     def append(self, value):
+        """Append value to the head of list
+
+        :param value: any value
+        """
         self.get_head().next = self.__class__(value)
 
     def __add__(self, other):
@@ -55,4 +66,8 @@ class List:
         print(sep.join(str(v) for v in values))
 
     def print_reversed(self, sep: str = ' '):
+        """Print all values from head to self separated by `sep`
+
+        :param sep: separator
+        """
         self._print(sep=sep, reversed_=True)
