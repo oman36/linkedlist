@@ -48,9 +48,7 @@ class List:
         return root
 
     def __reversed__(self):
-        values = [v for v in self]
-        for v in reversed(values):
-            yield v
+        return (v for v in reversed([v for v in self]))
 
     def _print(self, sep: str, reversed_: bool = False):
         values = reversed(self) if reversed_ else self
