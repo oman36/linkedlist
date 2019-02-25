@@ -48,8 +48,8 @@ class TestListMethods(unittest.TestCase):
     def test_get_head(self):
         head = List(3)
         list_ = List(1, List(2, head))
-        self.assertIs(list_.get_head(), head)
-        self.assertIs(head.get_head(), head)
+        self.assertIs(list_.get_tail(), head)
+        self.assertIs(head.get_tail(), head)
 
     def test_add(self):
         list_ = List(1, List(2, List(3)))

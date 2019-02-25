@@ -16,13 +16,13 @@ class List:
             current = current._next
 
     def print(self, sep: str = ' '):
-        """Print all values from self to head separated by `sep`
+        """Print all values from self to tail separated by `sep`
 
         :param sep: separator
         """
         self._print(sep=sep, reversed_=False)
 
-    def get_head(self):
+    def get_tail(self):
         """
         :return: last list's element
         """
@@ -36,14 +36,14 @@ class List:
 
         :param value: any value
         """
-        self.get_head()._next = self.__class__(value)
+        self.get_tail()._next = self.__class__(value)
 
     def __add__(self, other):
         if not isinstance(other, (List, list)):
             return NotImplemented
 
         root = self.__copy__()
-        current = root.get_head()
+        current = root.get_tail()
         for v in other:
             current._next = self.__class__(v)
             current = current._next
@@ -67,7 +67,7 @@ class List:
             print(v, end=sep)
 
     def print_reversed(self, sep: str = ' '):
-        """Print all values from head to self separated by `sep`
+        """Print all values from tail to self separated by `sep`
 
         :param sep: separator
         """
