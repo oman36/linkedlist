@@ -49,11 +49,10 @@ class List:
 
     def __copy__(self):
         current = root = self.__class__(self._value)
-        for i, val in enumerate(self):
-            if i == 0:
-                continue
-            current._next = self.__class__(val)
-            current = current.next
+        if self._next is not None:
+            for val in self._next:
+                current._next = self.__class__(val)
+                current = current._next
 
         return root
 
