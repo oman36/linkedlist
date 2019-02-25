@@ -8,3 +8,6 @@ class List:
         while current:
             yield current.value
             current = current.next
+
+    def print(self, sep=' '):
+        print(sep.join(str(v) for v in self))
