@@ -26,12 +26,15 @@ class List:
         self.get_head().next = self.__class__(value)
 
     def __add__(self, other):
-        if not isinstance(other, List):
+        if not isinstance(other, (List, list)):
             raise TypeError('unsupported operand type(s) for +: \'%s\' and \'%s\'' %
                             (self.__class__, other.__class__))
 
         root = self.__copy__()
-        root.get_head().next = other.__copy__()
+        current = root.get_head()
+        for v in other:
+            current.next = self.__class__(v)
+            current = current.next
         return root
 
     def __copy__(self):
