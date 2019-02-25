@@ -1,17 +1,17 @@
 class List:
     def __init__(self, value, next_: 'List' = None):
-        self.value = value
-        self.next = next_
+        self._value = value
+        self._next = next_
 
     def __iter__(self):
         for l in self._iter():
-            yield l.value
+            yield l._value
 
     def _iter(self):
         current = self
         while current:
             yield current
-            current = current.next
+            current = current._next
 
     def print(self, sep: str = ' '):
         """Print all values from self to head separated by `sep`
@@ -34,7 +34,7 @@ class List:
 
         :param value: any value
         """
-        self.get_head().next = self.__class__(value)
+        self.get_head()._next = self.__class__(value)
 
     def __add__(self, other):
         if not isinstance(other, (List, list)):
@@ -44,16 +44,16 @@ class List:
         root = self.__copy__()
         current = root.get_head()
         for v in other:
-            current.next = self.__class__(v)
-            current = current.next
+            current._next = self.__class__(v)
+            current = current._next
         return root
 
     def __copy__(self):
-        current = root = self.__class__(self.value)
+        current = root = self.__class__(self._value)
         for i, val in enumerate(self):
             if i == 0:
                 continue
-            current.next = self.__class__(val)
+            current._next = self.__class__(val)
             current = current.next
 
         return root
