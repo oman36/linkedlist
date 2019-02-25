@@ -24,3 +24,22 @@ class List:
 
     def append(self, value):
         self.get_head().next = List(value)
+
+    def __add__(self, other):
+        if not isinstance(other, List):
+            raise TypeError('unsupported operand type(s) for +: \'%s\' and \'%s\'' %
+                            (self.__class__, other.__class__))
+
+        root = self.__copy__()
+        root.get_head().next = other.__copy__()
+        return root
+
+    def __copy__(self):
+        current = root = self.__class__(self.value)
+        for i, val in enumerate(self):
+            if i == 0:
+                continue
+            current.next = self.__class__(val)
+            current = current.next
+
+        return root
