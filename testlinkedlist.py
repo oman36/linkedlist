@@ -71,6 +71,18 @@ class TestListMethods(unittest.TestCase):
             list_.print('\t')
             self.assertEqual(out.getvalue().strip(), '1\t2\t3')
 
+    def test_add_list(self):
+        list_ = List(1, List(2, List(3)))
+        simple_list = [5, 6]
+        list_ += simple_list
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
+        simple_list[0] = 0
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
+
 
 if __name__ == '__main__':
     unittest.main()
