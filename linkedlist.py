@@ -57,11 +57,12 @@ class List:
         return root
 
     def __reversed__(self):
-        return (v for v in reversed([v for v in self]))
+        return (v._value for v in reversed([v for v in self._iter()]))
 
     def _print(self, sep: str, reversed_: bool = False):
         values = reversed(self) if reversed_ else self
-        print(sep.join(str(v) for v in values))
+        for v in values:
+            print(v, end=sep)
 
     def print_reversed(self, sep: str = ' '):
         """Print all values from head to self separated by `sep`
