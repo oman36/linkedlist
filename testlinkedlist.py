@@ -89,6 +89,13 @@ class TestListMethods(unittest.TestCase):
             list_.print_reversed('\t')
             self.assertEqual(out.getvalue().strip(), '3\t2\t1')
 
+    def test_reverse(self):
+        list_ = List(1, List(2, List(3)))
+        values = []
+        for v in reversed(list_):
+            values.append(v)
+        self.assertEqual(values, [3, 2, 1])
+
 
 if __name__ == '__main__':
     unittest.main()
