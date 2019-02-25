@@ -18,7 +18,7 @@ class List:
     def print(self, sep: str = ' '):
         """Print all values from self to tail separated by `sep`
 
-        :param sep: separator
+        :param sep: string inserted between values, default a space.
         """
         self._print(sep=sep, reversed_=False)
 
@@ -69,6 +69,6 @@ class List:
     def print_reversed(self, sep: str = ' '):
         """Print all values from tail to self separated by `sep`
 
-        :param sep: separator
+        :param sep: string inserted between values, default a space.
         """
         self._print(sep=sep, reversed_=True)
