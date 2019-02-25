@@ -23,7 +23,7 @@ class List:
         return head
 
     def append(self, value):
-        self.get_head().next = List(value)
+        self.get_head().next = self.__class__(value)
 
     def __add__(self, other):
         if not isinstance(other, List):
