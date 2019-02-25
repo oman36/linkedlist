@@ -1,6 +1,7 @@
 import sys
 import unittest
 from contextlib import contextmanager
+from copy import copy
 from io import StringIO
 
 from linkedlist import List
@@ -61,6 +62,14 @@ class TestListMethods(unittest.TestCase):
         with captured_output() as (out, err):
             list_.print('\t')
             self.assertEqual(out.getvalue().strip(), '1\t2\t3\t5\t6')
+
+    def test_copy(self):
+        list_ = List(1, List(2, List(3)))
+        list_2 = copy(list_)
+        list_2.next.value = 0
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3')
 
 
 if __name__ == '__main__':
