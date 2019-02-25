@@ -13,7 +13,7 @@ class List:
             yield current
             current = current.next
 
-    def print(self, sep=' '):
+    def print(self, sep: str = ' '):
         print(sep.join(str(v) for v in self))
 
     def get_head(self):
