@@ -37,6 +37,13 @@ class TestListMethods(unittest.TestCase):
             list_.print('\t')
             self.assertEqual(out.getvalue().strip(), '1\t2\t3')
 
+    def test_append(self):
+        list_ = List(1, List(2, List(3)))
+        list_.append(4)
+        with captured_output() as (out, err):
+            list_.print('\t')
+            self.assertEqual(out.getvalue().strip(), '1\t2\t3\t4')
+
 
 if __name__ == '__main__':
     unittest.main()
