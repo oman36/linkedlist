@@ -20,8 +20,7 @@ class List:
 
         :param sep: string inserted between values, default a space.
         """
-        for v in self:
-            print(v, end=sep)
+        self._print(sep=sep, reversed_=False)
 
     def get_tail(self):
         """
@@ -60,14 +59,19 @@ class List:
         return root
 
     def __reversed__(self):
-        return (v._value for v in reversed([v for v in self._iter()]))
+        if self._next is not None:
+            for v in reversed(self._next):
+                yield v
+        yield self._value
+
+    def _print(self, sep: str, reversed_: bool = False):
+        values = reversed(self) if reversed_ else self
+        for v in values:
+            print(v, end=sep)
 
     def print_reversed(self, sep: str = ' '):
         """Print all values from tail to self separated by `sep`
 
         :param sep: string inserted between values, default a space.
         """
-        if self._next:
-            self._next.print_reversed(sep=sep)
-            print(sep, end='')
-        print(self._value, end='')
+        self._print(sep=sep, reversed_=True)
