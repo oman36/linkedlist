@@ -1,5 +1,5 @@
 class List:
-    __slots__ = ['_value', '_next']
+    __slots__ = ('_value', '_next')
 
     def __init__(self, value, next_: 'List' = None):
         self._value = value
