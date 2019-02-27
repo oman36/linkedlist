@@ -1,7 +1,6 @@
 import sys
 import unittest
 from contextlib import contextmanager
-from copy import copy
 from io import StringIO
 
 from linkedlist import List
